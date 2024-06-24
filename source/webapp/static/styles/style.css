@@ -1,0 +1,10 @@
+.article{
+    border: solid 1px;
+    color: darkviolet;
+    background: lightblue;
+}
+
+.image{
+    width: 250px;
+    height: auto;
+}
