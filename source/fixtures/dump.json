@@ -1,0 +1,68 @@
+[
+{
+  "model": "webapp.article",
+  "pk": 1,
+  "fields": {
+    "title": "Тестовая статья",
+    "author": "Карыбек",
+    "content": "Контент, что то про что то контент 112",
+    "created_at": "2024-06-24T06:36:30.460Z",
+    "update_at": "2024-06-24T06:38:01.120Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 2,
+  "fields": {
+    "title": "Статья2",
+    "author": "Милана",
+    "content": "Контент2",
+    "created_at": "2024-06-24T07:58:24.714Z",
+    "update_at": "2024-06-24T07:58:24.714Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 3,
+  "fields": {
+    "title": "Статья3",
+    "author": "Зауре",
+    "content": "Контент3",
+    "created_at": "2024-06-24T07:58:43.568Z",
+    "update_at": "2024-06-24T07:58:43.568Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 4,
+  "fields": {
+    "title": "Статья4",
+    "author": "Неизвестный",
+    "content": "Контент4",
+    "created_at": "2024-06-24T08:31:03.084Z",
+    "update_at": "2024-06-24T08:31:03.084Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 5,
+  "fields": {
+    "title": "test",
+    "author": "Неизвестный",
+    "content": "Контент6",
+    "created_at": "2024-06-24T08:33:56.846Z",
+    "update_at": "2024-06-24T08:33:56.846Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 6,
+  "fields": {
+    "title": "new title",
+    "author": "Nurbolot",
+    "content": "content new",
+    "created_at": "2024-06-24T08:55:13.082Z",
+    "update_at": "2024-06-24T08:55:13.082Z"
+  }
+}
+]
