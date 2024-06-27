@@ -1,16 +1,11 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="en">
+{% block links %}    
+{% endblock %}
 
-<head>
+{% block content %}
+	
 
-    <meta charset="UTF-8">
-
-    <title>Create</title>
-
-</head>
-
-<body>
 <h1>Create Article</h1>
 <form action="{% url 'create_article' %}" method="post">
     {% csrf_token %}
@@ -23,5 +18,4 @@
     <br/>
     <input type="submit" value="Send"/>
 </form>
-</body>
-</html>
+{% endblock %}
