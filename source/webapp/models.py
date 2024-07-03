@@ -14,8 +14,6 @@ class Article(models.Model):
     def __str__(self):
         return f"{self.pk}. {self.title}: {self.author}"
 
-
-
     class Meta:
         db_table = "articles"
         verbose_name = "Статья"
