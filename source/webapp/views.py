@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-
+from webapp.forms import ArticleForm
 from webapp.models import Article
 from webapp.validate import article_validate
 
@@ -12,23 +12,20 @@ def index(request):
 
 def create_article(request):
     if request.method == "GET":
-        return render(request, "create_article.html")
+        form = ArticleForm()
+        print(form)
+        return render(request, "create_article.html", {"form": form})
     else:
-        title = request.POST.get("title")
-        content = request.POST.get("content")
-        author = request.POST.get("author")
-
-        article = Article(
-            title=title,
-            content=content,
-            author=author
-        )
-        errors = article_validate(article)
-        if not errors:
-            article.save()
+        form = ArticleForm(data=request.POST)
+        if form.is_valid():
+            article = Article.objects.create(
+                title=request.POST.get("title"),
+                content=request.POST.get("content"),
+                author=request.POST.get("author")
+            )
             return redirect("article_detail", pk=article.pk)
 
-        return render(request, "create_article.html", {"errors": errors, "article": article})
+        return render(request, "create_article.html", {"form": form})
 
 
 def article_detail(request, *args, pk, **kwargs):
@@ -39,19 +36,27 @@ def article_detail(request, *args, pk, **kwargs):
 
 def update_article(request, *args, pk, **kwargs):
     if request.method == "GET":
-        return render(request, "update_article.html",
-                      context={"article": get_object_or_404(Article, pk=pk)})
-    else:
         article = get_object_or_404(Article, pk=pk)
-        article.title = request.POST.get("title")
-        article.content = request.POST.get("content")
-        article.author = request.POST.get("author")
+        form = ArticleForm(initial={
+            "title": article.title,
+            "content": article.content,
+            "author": article.author,
 
-        errors = article_validate(article)
-        if not errors:
+        })
+        return render(request, "update_article.html",
+                      context={"form": form})
+    else:
+        form = ArticleForm(data=request.POST)
+        if form.is_valid():
+            article = get_object_or_404(Article, pk=pk)
+            article.title = request.POST.get("title")
+            article.content = request.POST.get("content")
+            article.author = request.POST.get("author")
             article.save()
             return redirect("article_detail", pk=article.pk)
-        return render(request, "update_article.html", {"errors": errors, "article": article})
+
+        else:
+            return render(request, "update_article.html", {"form": form})
 
 
 def delete_article(request, *args, pk, **kwargs):

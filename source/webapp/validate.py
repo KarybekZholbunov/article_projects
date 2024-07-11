@@ -2,7 +2,7 @@ def article_validate(article):
     errors = {}
     if not article.title:
         errors["title"] = "Название обязательное поле"
-    elif len(article.title) > 3:
+    elif len(article.title) > 50:
         errors["title"] = "Длина название не может быть больше чем 50 символов"
     if not article.content:
         errors["content"] = "Контент обязательное поле"
