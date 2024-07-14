@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
     <form action="" method="post">
-    {% csrf_token %}
-        Вы дейстительно хотите удалить статью {{ article.title }}?
-         <br/>
+        {% csrf_token %}
+        Вы действительно хотите удалить статью {{ article.title }}?
+        <br>
         <button type="submit">Да</button>
-    </form>   
-    <a href="{% url "articles" %}">Нет</a>	
+    </form>
+    <a href="{% url "articles" %}">Нет</a>
 {% endblock %}

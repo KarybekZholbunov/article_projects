@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 
-    {% block links %}
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'update_article' article.pk %}">Редактировать</a>            
-        </li>
-        <li class="nav-item">        
-            <a class="nav-link active" aria-current="page" href="{% url 'delete_article' article.pk %}">Удалить</a>
-        </li>
-    {% endblock %}
+{% block links %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'update_article' article.pk %}">Редактировать</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'delete_article' article.pk %}">Удалить</a>
+    </li>
+{% endblock %}
+
 {% block content %}
     <div class="card mt-3" style="width: 18rem;">
-         <div class="card-body">
-             <h2 class="card-title">{{ article.title }}</h2>
-             <h4 class="card-subtitle mb-2 text-body-secondary">{{ article.author }}</h4>
-             <p class="card-text">{{ article.content }}</p>
-             <p class="card-text">{{ article.created_at|date:"Y-m-d" }}</p>
-             <p class="card-text">{{ article.get_status_display}}</p>
-             <a href="{% url 'articles' %}" class="card-link">На главную</a>
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ article.author }}</h6>
+            <p class="card-text">{{ article.content }}</p>
+            <p class="card-text">{{ article.created_at|date:'Y-m-d' }}</p>
+            <p class="card-text">{{ article.get_status_display }}</p>
+            <p class="card-text">{{ article.section.title }}</p>
+            <a href="{% url 'articles' %}" class="card-link">На главную</a>
         </div>
     </div>
 {% endblock %}
