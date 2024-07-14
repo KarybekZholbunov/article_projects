@@ -1,0 +1,61 @@
+{% csrf_token %}
+{#<label>Title:</label><br/>#}
+{#{% if errors.title %}#}
+{#    <input class="border border-danger border-3" type="text" value="{{ article.title }}" name="title"/><br/>#}
+{#    <p class="text-danger">{{ errors.title }}</p>#}
+{#    {% else %}#}
+{#    <input type="text" value="{{ article.title }}" name="title"/><br/>#}
+{#{% endif %}#}
+{##}
+{#<label>Text:</label><br/>#}
+{#{% if errors.content %}   #}
+{#    <textarea class="border border-danger border-3" name="content" >{{ article.content }}</textarea><br/>#}
+{#    <p class="text-danger">{{ errors.content }}</p>#}
+{#    {% else %}   #}
+{#    <textarea name="content">{{ article.content }}</textarea><br/>#}
+{#{% endif %}#}
+{##}
+{#<label>Author:</label><br/>#}
+{#{% if errors.author %}#}
+{#    <input class="border border-danger border-3" type="text" value="{{ article.author }}" name="author"/><br/>#}
+{#    <p class="text-danger">{{ errors.author }}</p>#}
+{#    {% else %}     #}
+{#    <input class="border border-danger border-3" type="text" value="{{ article.author }}" name="author"/><br/>#}
+{#{% endif %}#}
+{#<br/>#}
+
+{#{% for error in form.non_field_errors %}#}
+{#   <p class="form-error">{{ error }}</p>#}
+{#{% endfor %}#}
+
+{% for field in form %}
+    <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+    {% for error in field.errors %}
+       <p class="text-danger">{{ error }}</p>
+    {% endfor %}
+    <p>{{ field }}</p>
+{% endfor %}
+
+{#<p><label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label></p>#}
+{#{% for error in form.title.errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+{#<p>{{ form.title }}</p>#}
+{##}
+{##}
+{##}
+{#<p><label for="{{ form.author.id_for_label }}">{{ form.author.label }}</label></p>#}
+{#{% for error in form.author.errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+{#<p>{{ form.author }}</p>#}
+{##}
+{##}
+{##}
+{#<p><label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label></p>#}
+{#{% for error in form.content.errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+{#<p>{{ form.content }}</p>#}
+{#{{ form.as_p }}#}
+<input type="submit" value="{{button_text}}"/>
